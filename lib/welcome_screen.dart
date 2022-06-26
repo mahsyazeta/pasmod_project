@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './home_screen_pembeli.dart';
-import './home_screen_penjual.dart';
+
 class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -41,7 +40,7 @@ class WelcomeScreen extends StatelessWidget {
                         context, 
                         MaterialPageRoute(
                           builder: 
-                          (context)=>HomeScreenPembeli()
+                          (context)=>WelcomeScreen()
                         )
                       );
                     },
@@ -52,7 +51,7 @@ class WelcomeScreen extends StatelessWidget {
                         context, 
                         MaterialPageRoute(
                           builder: 
-                          (context)=>HomeScreenPenjual()
+                          (context)=>WelcomeScreen()
                         )
                       );
                     },
