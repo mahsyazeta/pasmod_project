@@ -1,24 +1,26 @@
 // ignore_for_file: library_private_types_in_public_api
 
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'welcome_screen.dart';
+import 'home_screen.dart';
 
-class SplashScreen extends StatefulWidget{
+class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), (){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> WelcomeScreen()));
+    Timer(Duration(seconds: 3), () {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
     });
   }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -27,22 +29,20 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-              Text(
-                'pmd',
-                style: TextStyle(
-                  fontSize: 80, 
+            Text(
+              'pmd',
+              style: TextStyle(
+                  fontSize: 80,
                   color: Colors.white,
-                  fontWeight: FontWeight.bold
-                ),
-              ),
-              Text(
-                'PASAR MODERN',
-                style: TextStyle(
-                  fontSize: 20, 
+                  fontWeight: FontWeight.bold),
+            ),
+            Text(
+              'PASAR MODERN',
+              style: TextStyle(
+                  fontSize: 20,
                   color: Colors.white,
-                  fontWeight: FontWeight.bold
-                ),
-              ),
+                  fontWeight: FontWeight.bold),
+            ),
           ],
         ),
       ),
