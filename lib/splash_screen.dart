@@ -1,7 +1,10 @@
 // ignore_for_file: library_private_types_in_public_api
 
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget{
   @override
@@ -10,6 +13,12 @@ class SplashScreen extends StatefulWidget{
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
+  void initState(){
+    super.initState();
+    Timer(Duration(seconds: 3), (){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> WelcomeScreen()));
+    });
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -19,9 +28,17 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
               Text(
-                'PAMOD',
+                'pmd',
                 style: TextStyle(
-                  fontSize: 40, 
+                  fontSize: 80, 
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+              Text(
+                'PASAR MODERN',
+                style: TextStyle(
+                  fontSize: 20, 
                   color: Colors.white,
                   fontWeight: FontWeight.bold
                 ),
