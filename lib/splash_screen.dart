@@ -3,8 +3,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'welcome_screen.dart';
 import 'home_screen.dart';
+import 'toko.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+          context, MaterialPageRoute(builder: (context) => toko()));
     });
   }
 

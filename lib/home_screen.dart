@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluid_kit/fluid_kit.dart';
+import 'nav-drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -9,26 +10,32 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  TextEditingController _controllerSearch = TextEditingController();
-  Widget? searchTextField = Text("Pencarian");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.home),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
-        ],
+        title: Text('Home'),
+      ),
+      drawer: Drawer(
+        child: Column(
+          children: [
+            const DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+                child: Text(' ')),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
       body: Center(
-        child: Column(
+        child: ListView(
           children: [
             Expanded(
               child: Container(
