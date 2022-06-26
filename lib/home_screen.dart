@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluid_kit/fluid_kit.dart';
-import 'nav-drawer.dart';
+import 'package:pasmod/toko.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -17,20 +17,37 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text('Home'),
       ),
       drawer: Drawer(
-        child: Column(
+        width: 150,
+        child: ListView(
+          padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                ),
-                child: Text(' ')),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
-              onTap: () {
-                Navigator.pop(context);
-              },
+            SizedBox(
+              height: 80,
+              width: 100,
+              child: const DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                  ),
+                  child: Text(
+                    'MENU',
+                    style: TextStyle(fontSize: 30, color: Colors.white),
+                    textAlign: TextAlign.center,
+                  )),
             ),
+            ListTile(
+                leading: Icon(Icons.shop_2),
+                title: Text(
+                  'Toko',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const toko()),
+                  );
+                }),
           ],
         ),
       ),
