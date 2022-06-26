@@ -59,7 +59,6 @@ class toko extends StatelessWidget {
                         color: Colors.red,
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 5),
                         width: 150,
                         height: 100,
                         color: Colors.red,
