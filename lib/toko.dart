@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluid_kit/fluid_kit.dart';
+import 'package:pasmod/home_screen.dart';
 
 class toko extends StatelessWidget {
   const toko({Key? key}) : super(key: key);
@@ -8,23 +9,40 @@ class toko extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text('Toko'),
       ),
       drawer: Drawer(
-        child: Column(
+        width: 150,
+        child: ListView(
+          padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                ),
-                child: Text(' ')),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
-              onTap: () {
-                Navigator.pop(context);
-              },
+            SizedBox(
+              height: 80,
+              width: 100,
+              child: const DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                  ),
+                  child: Text(
+                    'MENU',
+                    style: TextStyle(fontSize: 30, color: Colors.white),
+                    textAlign: TextAlign.center,
+                  )),
             ),
+            ListTile(
+                leading: Icon(Icons.home),
+                title: Text(
+                  'Menu',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
+                }),
           ],
         ),
       ),
@@ -34,45 +52,50 @@ class toko extends StatelessWidget {
             Expanded(
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.8,
                 color: Colors.black26,
-                child: Column(children: [
-                  Container(
-                    width: 500,
-                    color: Colors.amber,
-                    height: 400,
-                    margin: EdgeInsets.only(top: 20, bottom: 0),
-                  ),
-                  Container(
-                    width: 500,
-                    height: 100,
-                    alignment: Alignment.center,
-                    color: Colors.blue,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                child: Container(
+                  child: Fluid(
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(top: 5),
-                        width: 150,
-                        height: 100,
-                        color: Colors.red,
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 5),
-                        width: 150,
-                        height: 100,
-                        color: Colors.red,
-                      ),
+                      Fluidable(
+                          fluid: 1,
+                          minWidth: 100,
+                          child: Container(
+                            height: 300,
+                            color: Colors.white,
+                            width: 430,
+                            margin: EdgeInsets.only(
+                              top: 20,
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  child: Text(
+                                    'NAMA TOKO',
+                                    textAlign: TextAlign.end,
+                                    style: TextStyle(
+                                      fontSize: 28,
+                                    ),
+                                  ),
+                                  margin: EdgeInsets.only(top: 15, bottom: 20),
+                                ),
+                              ],
+                            ),
+                          )),
+                      Fluidable(
+                          fluid: 2,
+                          minWidth: 200,
+                          child: Container(
+                            height: 100,
+                            color: Colors.red,
+                            width: 430,
+                            margin: EdgeInsets.only(top: 0, bottom: 10),
+                          )),
                     ],
-                  )
-                ]),
+                  ),
+                ),
               ),
             ),
             Container(
-              margin: EdgeInsets.only(
-                bottom: 0,
-              ),
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.1,
               color: Colors.red,
