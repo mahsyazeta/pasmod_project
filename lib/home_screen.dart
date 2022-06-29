@@ -14,23 +14,35 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        centerTitle: true,
+        title: Text(
+          'PasMOD Batu',
+          textAlign: TextAlign.right,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 28,
+          ),
+        ),
+        backgroundColor: Color.fromARGB(255, 168, 181, 69),
+        elevation: 0.0,
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       drawer: Drawer(
+        backgroundColor: Color.fromARGB(255, 255, 255, 166),
         width: 150,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             SizedBox(
-              height: 80,
+              height: 65,
               width: 100,
               child: const DrawerHeader(
                   decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: Color.fromARGB(255, 168, 181, 69),
                   ),
                   child: Text(
                     'MENU',
-                    style: TextStyle(fontSize: 30, color: Colors.white),
+                    style: TextStyle(fontSize: 22, color: Colors.white),
                     textAlign: TextAlign.center,
                   )),
             ),
@@ -57,7 +69,18 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                color: Colors.black26,
+                height: MediaQuery.of(context).size.height,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 168, 181, 69),
+                      Color.fromARGB(255, 220, 231, 117),
+                      Color.fromARGB(255, 202, 191, 69),
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                ),
                 child: Container(
                   child: Fluid(
                     children: [
@@ -65,8 +88,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           fluid: 1,
                           minWidth: 100,
                           child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.white,
+                                border:
+                                    Border.all(width: 1, color: Colors.white)),
                             height: 200,
-                            color: Colors.white,
                             width: 400,
                             margin: EdgeInsets.only(
                                 top: 40, left: 15, right: 15, bottom: 10),
@@ -75,7 +102,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Container(
                                   child: Text(
                                     'HOT NEWS',
-                                    style: TextStyle(fontSize: 28),
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30,
+                                      color: Color.fromARGB(255, 168, 181, 69),
+                                    ),
                                   ),
                                   margin: EdgeInsets.only(top: 15, bottom: 20),
                                 ),
@@ -86,12 +117,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Container(
                                       width: 150,
                                       height: 100,
-                                      color: Colors.amber,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color:
+                                              Color.fromARGB(255, 202, 191, 69),
+                                          border: Border.all(
+                                              width: 1, color: Colors.white)),
                                     ),
                                     Container(
                                       width: 150,
                                       height: 100,
-                                      color: Colors.amber,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: Colors.blue,
+                                          border: Border.all(
+                                              width: 1, color: Colors.white)),
                                     ),
                                   ],
                                 ),
