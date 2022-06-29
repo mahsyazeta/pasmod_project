@@ -10,6 +10,7 @@ class Tokoku extends StatefulWidget {
 class _TokokuState extends State<Tokoku> {
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
