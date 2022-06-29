@@ -9,6 +9,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
@@ -65,9 +66,23 @@ class _HomeScreenState extends State<HomeScreen> {
                   )),
             ),
             ListTile(
-                leading: Icon(Icons.shop_2),
+                leading: Icon(Icons.shopping_bag),
                 title: Text(
                   'Toko',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => toko()),
+                  );
+                }),
+            ListTile(
+                leading: Icon(Icons.shop_rounded),
+                title: Text(
+                  'Tokoku',
                   style: TextStyle(
                     fontSize: 20,
                   ),
