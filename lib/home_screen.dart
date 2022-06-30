@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluid_kit/fluid_kit.dart';
 import 'package:pasmod/toko.dart';
+import 'package:pasmod/tokoku_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -90,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => toko()),
+                    MaterialPageRoute(builder: (context) => Tokoku()),
                   );
                 }),
           ],
