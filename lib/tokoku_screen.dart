@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pasmod/reusewidget.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'daftarTokoku_screen.dart';
+import 'home_screen.dart';
 
 class Tokoku extends StatefulWidget {
 
@@ -12,33 +13,66 @@ class Tokoku extends StatefulWidget {
 }
 
 class _TokokuState extends State<Tokoku> {
+  TextEditingController _passwordTextController = TextEditingController();
+  TextEditingController _emailTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-      TextEditingController _emailTextController = TextEditingController();
-  TextEditingController _passwordTextCotroller = TextEditingController();
-    
     return Scaffold(
       body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
-          color: Colors.black,
-        ),
+            gradient: LinearGradient(colors: [
+          hexStringToColor("CB2B93"),
+          hexStringToColor("9546C4"),
+          hexStringToColor("5E61F4")
+        ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              reusableTextField('Masukkan Nama Toko Anda', Icons.person_outline, false, _emailTextController),
-              SizedBox( height: 30,),
-              reusableTextField('Masukkan Password Anda', Icons.lock_outline, true, _passwordTextCotroller)
-            ],
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+                20, MediaQuery.of(context).size.height * 0.2, 20, 0),
+            child: Column(
+              children: <Widget>[
+                const SizedBox(
+                  height: 30,
+                ),
+                reusableTextField("Masukkan Nama Toko", Icons.person_outline, false,
+                    _emailTextController),
+                const SizedBox(
+                  height: 20,
+                ),
+                reusableTextField("Masukkan Password", Icons.lock_outline, true,
+                    _passwordTextController),
+                const SizedBox(
+                  height: 5,
+                ),
+                forgetPassword(context),
+                firebaseUIButton(context, "Masuk", () {
+                  FirebaseAuth.instance
+                      .signInWithEmailAndPassword(
+                          email: _emailTextController.text,
+                          password: _passwordTextController.text)
+                      .then((value) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                  }).onError((error, stackTrace) {
+                    print("Error ${error.toString()}");
+                  });
+                }),
+                signUpOption()
+              ],
+            ),
           ),
         ),
       ),
     );
   }
-   Row signUpOption() {
+
+  Row signUpOption() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Don't have account?",
+        const Text("Belum Punya Toko",
             style: TextStyle(color: Colors.white70)),
         GestureDetector(
           onTap: () {
@@ -46,13 +80,14 @@ class _TokokuState extends State<Tokoku> {
                 MaterialPageRoute(builder: (context) => SignUpScreen()));
           },
           child: const Text(
-            " Sign Up",
+            " Daftarkan",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
         )
       ],
     );
   }
+
   Widget forgetPassword(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
